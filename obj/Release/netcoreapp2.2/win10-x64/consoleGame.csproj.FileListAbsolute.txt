@@ -1,0 +1,14 @@
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\hostpolicy.dll
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\hostfxr.dll
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.exe
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.deps.json
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.runtimeconfig.json
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.runtimeconfig.dev.json
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.dll
+C:\Coding\blackJack_v1.2\bin\Release\netcoreapp2.2\win10-x64\consoleGame.pdb
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.csprojAssemblyReference.cache
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.csproj.CoreCompileInputs.cache
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.AssemblyInfoInputs.cache
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.AssemblyInfo.cs
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.dll
+C:\Coding\blackJack_v1.2\obj\Release\netcoreapp2.2\win10-x64\consoleGame.pdb

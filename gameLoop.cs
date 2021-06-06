@@ -16,6 +16,7 @@ namespace consoleGame
             int playerScore1 = 0;
             int playerScore2 = 0;
             int playerBet = 0;
+
             int splitBet1 = 0;
             int splitBet2 = 0;
             int payOut = 0;
@@ -31,19 +32,16 @@ namespace consoleGame
             // If player stays/ stays both split hands
             bool stay = false;
 
-            bool stay1 = false;
             // Stay bool for split hand 1
-            bool stay11 = false;
+            bool stay1 = false;
+            // Stay bool for split hand 2
             bool stay2 = false;
-            bool stay22 = false;
 
             List<string> splitHand1 = new List<string> { " " };
             List<string> splitHand2 = new List<string> { " " };
 
-            while ((playerScore <= 21 && dealerScore <= 21) && (stay == false))
+            if ((playerScore <= 21 && dealerScore <= 21) && (stay == false))
             {
-                if (stay1 == false)
-                {
                     bool hitStay = false;
 
                     playerBet = ValidateEntry(count, playerMoney);
@@ -95,7 +93,7 @@ namespace consoleGame
                                 initDeal = false;
 
                                 // logic for splitHand1
-                                while ((GetIntValue(splitHand1) < 22) && !stay11)
+                                while ((GetIntValue(splitHand1) < 22) && !stay1)//stay11
                                 {
                                     Spacer(2, " split hand 1: ");
                                     PrintHand(" 1st split", false, splitHand1, splitBet1, playerMoney);
@@ -110,24 +108,21 @@ namespace consoleGame
                                         {
                                             Console.ForegroundColor = ConsoleColor.Red;
                                             Spacer(2, " split hand 1 busted! ");
-                                            playerHand = splitHand2;
-                                            playerBet = splitBet2;
-                                            splitBool = false;
+                                            //playerHand = splitHand2;
+                                            //playerBet = splitBet2;
+                                            //splitBool = false;
                                             AlternateColor(count);
                                         }
                                     }
                                     else
                                     {
                                         hitStay = true;
-                                        stay11 = true;
-                                        if (stay2)
-                                            stay = true;
                                         stay1 = true;
                                     }
                                 }
 
                                 // Logic for splitHand2
-                                while ((GetIntValue(splitHand2) < 22) && !stay22)
+                                while ((GetIntValue(splitHand2) < 22) && !stay2)//stay22
                                 {
                                     Spacer(2, " split hand 2: ");
                                     PrintHand(" 2nd split", false, splitHand2, splitBet2, playerMoney);
@@ -142,11 +137,10 @@ namespace consoleGame
                                         {
                                             Console.ForegroundColor = ConsoleColor.Red;
                                             Spacer(2, " split hand 2 busted! ");
-                                            playerHand = splitHand1;
-                                            playerBet = splitBet1;
-                                            if (!splitBool)
+                                            //playerHand = splitHand1;
+                                            //playerBet = splitBet1;
+                                            if (playerScore1 > 21)
                                             {
-
                                                 playerBust = true;
                                             }
                                             AlternateColor(count);
@@ -154,19 +148,20 @@ namespace consoleGame
                                     }
                                     else
                                     {
-                                        stay22 = true;
-                                        stay1 = true;
+                                        stay2 = true;
+                                        //stay1 = true;
                                         hitStay = true;
-                                        if (stay2)
-                                        {
-                                            stay = true;
-                                        }
+                                        stay = true;
+                                        
                                     }
                                 }
                             }
                         }
                         //  ***************************
                         // END split logic
+                        //  ***************************
+                        //  ***************************
+                        // BEGIN single hand logic
                         //  ***************************
                         else
                         {
@@ -197,10 +192,14 @@ namespace consoleGame
                                 if (stay2 == true)
                                     stay = true;
                             }
+                        //  ***************************
+                        //END single hand logic
+                        //  ***************************
                         }
                     }
                     if(!playerBust)
                     {
+                        // print hands after round
                         if (splitBool)
                         {
                             playerScore1 = GetIntValue(splitHand1);
@@ -213,9 +212,11 @@ namespace consoleGame
                     }
                     if(!dealerBust)
                         dealerScore = GetIntValue(dealerHand);
-                }
+                //}
 
-                // Dealer deals to themselves
+                //  ***************************
+                // BEGIN Dealer deals to themselves
+                //  ***************************
                 while (dealerScore < 17)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -237,13 +238,17 @@ namespace consoleGame
                     Console.ReadKey();
                 }
                 PrintHand("Dealer's", false, dealerHand);
+                //  ***************************
+                // END Dealer deals to themselves
+                //  ***************************
 
-                if (splitBool && !playerBust)
+
+                if (splitBool)// && !playerBust
                 {
                     PrintHand("1st split", false, splitHand1, splitBet1, playerMoney);
                     PrintHand("2nd split", false, splitHand2, splitBet2, playerMoney);
                 }
-                else if(!playerBust)
+                else// if(!playerBust)
                     PrintHand("Your", false, playerHand, playerBet, playerMoney);
 
 
@@ -251,70 +256,138 @@ namespace consoleGame
                 {
                     playerScore1 = GetIntValue(splitHand1);
                     playerScore2 = GetIntValue(splitHand2);
+                    // If split
+                    // if dealer didn't bust
+                    if(!dealerBust) {
 
+                        if(playerScore1 <= 21 && playerScore2 <= 21) {
+                            
+                            if(playerScore1 > dealerScore && playerScore2 > dealerScore) {
 
-                    if ((playerScore1 > dealerScore || playerScore2 > dealerScore) && !dealerBust)
-                    {
-                        if (playerScore2 > dealerScore && playerScore1 > dealerScore)
-                        {
-                            payOut = 4 * (splitBet1);
-                            playerMoney += payOut;
-                            Spacer(2, " both hands beat the dealer! Payout: $" + payOut);
-                            splitBet1 = 0;
-                            splitBet2 = 0;
-                            payOut = 0;
+                                payOut = 4 * (splitBet1);
+                                playerMoney += payOut;
+                                Spacer(2, " both hands beat the dealer! Payout: $" + payOut);
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                payOut = 0;
+
+                            } else if(playerScore1 > dealerScore || playerScore2 > dealerScore) {
+
+                                payOut = 2 * (splitBet1);
+                                playerMoney += payOut;
+                                Spacer(2, " one hand beat the dealer Payout: $" + payOut + "  Total bet: $" + (2 * splitBet1));
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                payOut = 0;
+
+                            } else {
+
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                Spacer(2, " dealer beats both hands ");
+
+                            }
+                        } else {
+                            if(playerScore1 > 21 && playerScore2 > 21) {
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                Spacer(2, " both hands busted ");
+                            } else if(playerScore1 > 21 || playerScore2 > 21) {
+
+                                Spacer(2, " one hand busted ");
+
+                                if((playerScore1 <= 21 && playerScore1 > dealerScore) || (playerScore2 <= 21 && playerScore2 > dealerScore)) {
+
+                                    payOut = 2 * (splitBet1);
+                                    playerMoney += payOut;
+                                    Spacer(2, " one hand beat the dealer Payout: $" + payOut + "  Total bet: $" + (2 * splitBet1));
+
+                                } else {
+                                    Spacer(2, " dealer beat your other hand ");
+                                }
+                            } else {
+                                Spacer(2, " dealer beats both hands ");
+                            }
                         }
-                        else
-                        {
-                            payOut = 2 * (splitBet1);
-                            playerMoney += payOut;
-                            Spacer(2, " one hand beat the dealer Payout: $" + payOut + "  Total bet: $" + (2 * splitBet1));
-                            splitBet1 = 0;
-                            splitBet2 = 0;
-                            payOut = 0;
+                    // If split
+                    // If dealer busted
+                    } else {
+                        Spacer(2, " dealer busted ");
+
+                        if(playerScore1 <= 21 && playerScore2 <= 21) {
+                                payOut = 4 * (splitBet1);
+                                playerMoney += payOut;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Spacer(2, " both hands beat the dealer! Payout: $" + payOut);
+                                AlternateColor(count);
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                payOut = 0;
+
+                        } else if(playerScore1 <= 21 || playerScore2 <= 21) {
+
+                                payOut = 2 * (splitBet1);
+                                playerMoney += payOut;
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Spacer(2, " one hand beat the dealer Payout: $" + payOut + "  Total bet: $" + (2 * splitBet1));
+                                AlternateColor(count);
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                payOut = 0;
+
+                        } else {
+
+                                splitBet1 = 0;
+                                splitBet2 = 0;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Spacer(2, " both hands busted ");
+                                AlternateColor(count);
+
                         }
-                    }
-                    else if(!dealerBust)
-                    {
-                        splitBet1 = 0;
-                        splitBet2 = 0;
-                        Spacer(2, " dealer beats both hands ");
-                    }
-                    else if(dealerBust && playerScore1 < 22 && playerScore2 < 22)
-                    {
-                        payOut = 4 * (splitBet1);
-                        playerMoney += payOut;
-                        Spacer(2, " both hands beat the dealer! Payout: $" + payOut);
-                        splitBet1 = 0;
-                        splitBet2 = 0;
-                        payOut = 0;
                     }
                 }
+                // If no split 
+                // If dealer has busted
                 else if (dealerBust)
                 {
                     if (playerBust)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Spacer(2, "both dealer and player busted.");
+                        AlternateColor(count);
                         playerBet = 0;
                     }
                     else
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Spacer(2, "dealer busts! ");
+                        AlternateColor(count);
 
                     if (!blackjack && !playerBust)
                     {
                         playerMoney += (2 * playerBet);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Spacer(2, " you beat the dealer, Payout: $" + playerBet);
                         playerBet = 0;
+                        AlternateColor(count);
                     } else if (!playerBust){
-                        playerMoney += ((3 * splitBet1) / 2) + splitBet1;
+                        payOut = ((3 * playerBet) / 2) + playerBet;
+                        playerMoney += payOut;
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Spacer(2, " Blackjack! Payout: $" + payOut);
+                        AlternateColor(count);
                         playerBet = 0;
                     }
                 }
+                // If no split
+                // If dealer didn't bust
                 else
                 {
                     if (playerBust)
                     {
                         playerBet = 0;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Spacer(2, "you busted - dealer wins");
+                        AlternateColor(count);
                     }
                     else
                     {
@@ -322,18 +395,25 @@ namespace consoleGame
                         {
                             if (!blackjack)
                                 playerMoney += (2 * playerBet);
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Spacer(2, "you win! dealer score: " + dealerScore + " your score: " + playerScore);
+                            Spacer(2, "Payout: $" + (2* playerBet));
+                            AlternateColor(count);
                         }
                         else if (dealerScore > playerScore)
                         {
                             playerBet = 0;
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Spacer(2, "you lose! dealer score: " + dealerScore + " your score: " + playerScore);
+                            AlternateColor(count);
                         }
                         else if (!blackjack)
                         {
                             playerMoney += playerBet;
                             playerBet = 0;
+                            Console.ForegroundColor = ConsoleColor.Yellow;
                             Spacer(2, " push ");
+                            AlternateColor(count);
                         }
                     }
                 }
