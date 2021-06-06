@@ -20,3 +20,14 @@ C:\Coding\consoleGame\obj\Debug\netcoreapp2.2\consoleGame.AssemblyInfoInputs.cac
 C:\Coding\consoleGame\obj\Debug\netcoreapp2.2\consoleGame.AssemblyInfo.cs
 C:\Coding\consoleGame\obj\Debug\netcoreapp2.2\consoleGame.dll
 C:\Coding\consoleGame\obj\Debug\netcoreapp2.2\consoleGame.pdb
+C:\Coding\blackJack_v1.2\bin\Debug\netcoreapp2.2\consoleGame.deps.json
+C:\Coding\blackJack_v1.2\bin\Debug\netcoreapp2.2\consoleGame.runtimeconfig.json
+C:\Coding\blackJack_v1.2\bin\Debug\netcoreapp2.2\consoleGame.runtimeconfig.dev.json
+C:\Coding\blackJack_v1.2\bin\Debug\netcoreapp2.2\consoleGame.dll
+C:\Coding\blackJack_v1.2\bin\Debug\netcoreapp2.2\consoleGame.pdb
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.csprojAssemblyReference.cache
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.csproj.CoreCompileInputs.cache
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.AssemblyInfoInputs.cache
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.AssemblyInfo.cs
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.dll
+C:\Coding\blackJack_v1.2\obj\Debug\netcoreapp2.2\consoleGame.pdb

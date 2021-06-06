@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Coding\\consoleGame\\consoleGame.csproj",
+      "projectUniqueName": "C:\\Coding\\blackJack_v1.2\\consoleGame.csproj",
       "projectName": "consoleGame",
-      "projectPath": "C:\\Coding\\consoleGame\\consoleGame.csproj",
+      "projectPath": "C:\\Coding\\blackJack_v1.2\\consoleGame.csproj",
       "packagesPath": "C:\\Users\\jacqo\\.nuget\\packages\\",
-      "outputPath": "C:\\Coding\\consoleGame\\obj\\",
+      "outputPath": "C:\\Coding\\blackJack_v1.2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

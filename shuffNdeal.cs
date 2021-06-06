@@ -13,7 +13,6 @@ namespace consoleGame
 
             string[] VALS = new string[] {"Ace", "Two", "Three", "Four", "Five", "Six", "Seven",
                                              "Eight", "Nine", "Ten", "Jack", "Queen", "King"};
-
             List<string> deck = new List<string>();
 
             for (int x = 0; x < SUITS.Length; ++x)
@@ -30,7 +29,6 @@ namespace consoleGame
         //Uses 5 iterations of Fischer-Yates shuffle to randomize the order of the deck
         public static List<string> Shuffle(List<string> deck)
         {
-            
             int n = deck.Count;
             string placeHolder;
 
@@ -52,7 +50,6 @@ namespace consoleGame
 
         public static List<string> Deal(List<string> shuffled)
         {
-            
             List<string> hand = new List<string>();
             hand.Add(shuffled[0]);
             hand.Add(shuffled[1]);

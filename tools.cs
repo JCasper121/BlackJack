@@ -80,7 +80,7 @@ namespace consoleGame
                         int spaces = 45 - cardLen;
                         string spacesString = new String(' ', spaces);
                         string printLine = hand[i] + spacesString + "Your bet: $" + playerBet;
-                        Console.WriteLine(printLine);
+                        Console.Write(printLine);
                     }
                     else
                         Console.Write("\n{0}", hand[i]);
@@ -88,7 +88,7 @@ namespace consoleGame
             }
             if (!hide)
             {
-                Console.WriteLine("\nTotal: {0}", scoreString);
+                Console.WriteLine("\n\nTotal: {0}", scoreString);
             }
             return;
         }
